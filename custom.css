@@ -18,6 +18,7 @@
 
 /* Base */
 body { color: var(--foreground); line-height: 1.7; }
+.text-foreground { color: var(--foreground) !important; }
 
 /* Hide skip link */
 #skip-to-content { position:absolute;top:-9999px;left:-9999px }
