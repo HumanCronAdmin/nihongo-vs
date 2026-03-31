@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://humancronadmin.github.io/sitemap-index.xml
+Sitemap: https://humancronadmin.github.io/nihongo-vs/sitemap-index.xml
