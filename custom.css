@@ -1,0 +1,160 @@
+/* NihongoVS UI Override */
+
+[data-theme="light"] {
+  --background: #fafaf8;
+  --foreground: #1a1a2e;
+  --accent: #d4451a;
+  --muted: #f0ede8;
+  --border: #d6d0c8;
+}
+
+[data-theme="dark"] {
+  --background: #161822;
+  --foreground: #e8eaf0;
+  --accent: #f0884a;
+  --muted: #252a3e;
+  --border: #3a405c;
+}
+
+body {
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  border-bottom: 2px solid var(--accent) !important;
+}
+header a[href*="nihongo-vs"] {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+}
+
+#menu-items a {
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+#menu-items a:hover {
+  background: var(--muted);
+}
+
+main > section:first-child {
+  padding-top: 3rem !important;
+  padding-bottom: 2rem !important;
+}
+main > section:first-child h1 {
+  font-size: 2.2rem !important;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+main > section:first-child p {
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+a[href*="search/"] {
+  border-radius: 12px !important;
+  padding: 14px 18px !important;
+  background: var(--muted);
+  border-color: transparent !important;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+a[href*="search/"]:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+a[href*="-vs-"].group {
+  border-radius: 12px !important;
+  padding: 1.25rem !important;
+  transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s !important;
+}
+a[href*="-vs-"].group:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(0,0,0,0.12);
+}
+
+span.rounded.bg-muted,
+a[href*="-vs-"] span[class*="rounded"][class*="bg-muted"] {
+  background: var(--accent) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 0.7rem !important;
+  padding: 2px 10px !important;
+  border-radius: 999px !important;
+}
+
+a[href*="-vs-"] h3 {
+  font-size: 1.05rem !important;
+}
+a[href*="-vs-"] p {
+  color: var(--foreground) !important;
+  opacity: 0.65;
+  font-size: 0.85rem !important;
+  line-height: 1.5;
+}
+
+h2 {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+}
+
+section a[href*="category/"],
+section a[href*="jlpt/"] {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--muted);
+  margin: 3px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none !important;
+  transition: background 0.15s, color 0.15s;
+}
+section a[href*="category/"]:hover,
+section a[href*="jlpt/"]:hover {
+  background: var(--accent);
+  color: white;
+}
+
+a[href*="archetype/"] {
+  text-decoration: none !important;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+footer a {
+  text-decoration: none !important;
+  font-weight: 600;
+  color: var(--accent);
+}
+footer a:hover {
+  text-decoration: underline !important;
+}
+
+a {
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.15s;
+}
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+article.prose h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--muted);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+@media (max-width: 640px) {
+  main > section:first-child h1 { font-size: 1.6rem !important; }
+  .app-layout { padding-inline: 1rem !important; }
+}
