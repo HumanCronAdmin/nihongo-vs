@@ -16,22 +16,38 @@
   --border: #374151;
 }
 
-/* ===== FORCE ALL TEXT FULLY VISIBLE ===== */
-.text-foreground\/50,
-.text-foreground\/60,
-.text-foreground\/70,
-.text-foreground\/80,
-.text-foreground\/90 {
-  color: var(--foreground) !important;
-}
-.opacity-50, .opacity-70, .opacity-75, .opacity-80, .opacity-90 {
+/* ===== NUKE ALL TRANSPARENCY - highest specificity ===== */
+html body * {
   opacity: 1 !important;
 }
-.line-clamp-2 {
-  -webkit-line-clamp: unset !important;
+html #skip-to-content {
+  opacity: 0 !important;
 }
-p, span, li, td, th, h1, h2, h3, h4, h5, h6, a, label, strong, em, blockquote {
+html #skip-to-content:focus {
   opacity: 1 !important;
+}
+
+@supports (color:color-mix(in lab,red,red)) {
+  html body .text-foreground\/50,
+  html body .text-foreground\/60,
+  html body .text-foreground\/70,
+  html body .text-foreground\/80,
+  html body .text-foreground\/90,
+  html body [class*="text-foreground"] {
+    color: var(--foreground) !important;
+  }
+  html body .bg-accent\/5,
+  html body .hover\:bg-accent\/5:hover {
+    background-color: color-mix(in oklab, var(--accent) 8%, transparent) !important;
+  }
+  html body .border-border\/50 {
+    border-color: var(--border) !important;
+  }
+  html body .bg-muted\/30,
+  html body .bg-muted\/50,
+  html body .bg-muted\/75 {
+    background-color: var(--muted) !important;
+  }
 }
 
 /* ===== BASE ===== */
@@ -47,12 +63,10 @@ body {
   position: absolute !important;
   top: -9999px !important;
   left: -9999px !important;
-  opacity: 0 !important;
 }
 #skip-to-content:focus {
   top: 8px !important;
   left: 8px !important;
-  opacity: 1 !important;
 }
 
 /* ===== HEADER ===== */
@@ -120,7 +134,9 @@ a[href*="search/"].flex svg {
 }
 
 /* ===== FIX GIANT SVG ===== */
-main > svg, main section > svg, main div > svg:not(a svg):not(button svg) {
+main > svg,
+main section > svg,
+main div > svg:not(a svg):not(button svg) {
   max-width: 48px !important;
   max-height: 48px !important;
 }
@@ -138,26 +154,23 @@ a[href*="archetype/"].group:hover {
   border-color: var(--accent) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-/* Card title */
-a[href*="-vs-"] h3,
-a[href*="archetype/"] h3 {
+html body a[href*="-vs-"] h3,
+html body a[href*="archetype/"] h3 {
   font-weight: 700 !important;
   color: var(--foreground) !important;
   text-decoration: none !important;
 }
 a[href*="-vs-"]:hover h3 { color: var(--accent) !important; }
-
-/* Card description */
-a[href*="-vs-"] p,
-a[href*="archetype/"] p {
+html body a[href*="-vs-"] p,
+html body a[href*="archetype/"] p {
   color: var(--foreground) !important;
   font-size: 0.875rem !important;
   line-height: 1.55;
 }
 
 /* JLPT badges */
-a[href*="-vs-"] span[class*="rounded"],
-span.rounded.bg-muted {
+html body a[href*="-vs-"] span[class*="rounded"],
+html body span.rounded.bg-muted {
   background: var(--accent) !important;
   color: white !important;
   font-weight: 700 !important;
@@ -195,7 +208,7 @@ article h1 { font-size: 1.8rem !important; font-weight: 800; color: var(--foregr
 article h2 { margin-top: 2rem; border-bottom: 2px solid var(--muted); color: var(--foreground) !important; }
 article p { line-height: 1.8; color: var(--foreground) !important; }
 article table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-article table th { background: var(--muted); padding: 10px 14px; font-weight: 700; }
+article table th { background: var(--muted); padding: 10px 14px; font-weight: 700; color: var(--foreground) !important; }
 article table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--foreground) !important; }
 article blockquote {
   border-left: 3px solid var(--accent);
